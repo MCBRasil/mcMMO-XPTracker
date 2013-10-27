@@ -1,0 +1,20 @@
+#
+#  mcMMOXPTracker configuration
+#  Last updated on ${project.version}-b${BUILD_NUMBER}
+#
+#####
+
+#
+#  Settings for mcMMOXPTracker in general
+###
+General:
+    # Should mcMMOXPTracker print out debug messages?
+    Verbose_Logging: false
+    # Should mcMMOXPTracker over-write configs to update, or make new ones ending in .new?
+    Config_Update_Overwrite: true
+
+#
+#  Settings for the XP tracker
+###
+XP_Tracker:
+    Track_Interval: 10

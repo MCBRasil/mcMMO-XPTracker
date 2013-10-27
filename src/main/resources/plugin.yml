@@ -1,0 +1,17 @@
+name: mcMMOXPTracker
+version: ${project.version}-b${BUILD_NUMBER}
+description: >
+  mcMMOXPTracker is a convenient tool to track how fast players are gaining
+  XP in various skills. This can be very useful when trying to balance XP gains
+  across the mcMMO skills.
+
+author: TfT_02
+website: http://dev.bukkit.org/server-mods/mcmmo/
+
+main: org.mcmmo.mcmmoxptracker.mcMMOXPTracker
+softdepend: [mcMMO]
+load: STARTUP
+
+commands:
+    xptracker:
+        description: Check tracked XP stats

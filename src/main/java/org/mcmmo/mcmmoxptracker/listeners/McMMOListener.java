@@ -5,6 +5,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
+import com.gmail.nossr50.datatypes.skills.SkillType;
+import com.gmail.nossr50.events.experience.McMMOPlayerXpGainEvent;
+
+import org.mcmmo.mcmmoxptracker.util.player.UserManager;
+
 public class McMMOListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -15,10 +20,13 @@ public class McMMOListener implements Listener {
         }
 
         Player player = event.getPlayer();
-//        SkillType skillType = event.getSkill();
 
-//        if (skillType.isChildSkill()) {
-//            return;
-//        }
+        SkillType skillType = event.getSkill();
+
+        if (skillType.isChildSkill()) {
+            return;
+        }
+
+        UserManager.getPlayer(player).getProfile().registerXpGain(skillType, event.getRawXpGained());
     }
 }

@@ -6,7 +6,10 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.mcmmo.mcmmoxptracker.commands.XPTrackerCommand;
+import org.mcmmo.mcmmoxptracker.config.Config;
 import org.mcmmo.mcmmoxptracker.listeners.McMMOListener;
+import org.mcmmo.mcmmoxptracker.runnables.ClearRegisteredXPGainTask;
+import org.mcmmo.mcmmoxptracker.util.Logger;
 
 public class mcMMOXPTracker extends JavaPlugin {
     public static mcMMOXPTracker p;
@@ -31,6 +34,9 @@ public class mcMMOXPTracker extends JavaPlugin {
         registerEvents();
 
         registerCommands();
+
+        Config.getInstance();
+        Logger.getInstance().log("Starting " + this.getDescription().getName() + ": " + Logger.getInstance().getDateStamp());
     }
 
     private void registerEvents() {
@@ -51,6 +57,8 @@ public class mcMMOXPTracker extends JavaPlugin {
      */
     @Override
     public void onDisable() {
+        Logger.getInstance().log("Stopping " + this.getDescription().getName() + ": " + Logger.getInstance().getDateStamp());
+        Logger.getInstance().close();
         this.getServer().getScheduler().cancelTasks(this);
     }
 
@@ -67,5 +75,10 @@ public class mcMMOXPTracker extends JavaPlugin {
 
     public boolean isMcMMOEnabled() {
         return mcMMOEnabled;
+    }
+
+    private void scheduleTasks() {
+        // Clear the registered XP data so players can earn XP again
+        new ClearRegisteredXPGainTask().runTaskTimer(this, 60, 60);
     }
 }
