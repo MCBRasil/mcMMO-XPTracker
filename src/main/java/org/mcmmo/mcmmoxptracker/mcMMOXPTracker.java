@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.mcmmo.mcmmoxptracker.commands.XPTrackerCommand;
 import org.mcmmo.mcmmoxptracker.config.Config;
 import org.mcmmo.mcmmoxptracker.listeners.McMMOListener;
+import org.mcmmo.mcmmoxptracker.listeners.PlayerListener;
 import org.mcmmo.mcmmoxptracker.runnables.ClearRegisteredXPGainTask;
 import org.mcmmo.mcmmoxptracker.util.Logger;
 
@@ -42,6 +43,7 @@ public class mcMMOXPTracker extends JavaPlugin {
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
 
+        pm.registerEvents(new PlayerListener(), this);
         pm.registerEvents(new McMMOListener(), this);
     }
 
