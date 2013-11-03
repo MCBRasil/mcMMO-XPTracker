@@ -54,6 +54,7 @@ public class Logger {
     }
 
     public void log(String message) {
+        plugin.debug(message);
         out.println(getTimeStamp() + " [INFO] " + message);
         out.flush();
     }

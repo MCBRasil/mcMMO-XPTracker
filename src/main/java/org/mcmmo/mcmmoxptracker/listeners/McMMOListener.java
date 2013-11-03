@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 import com.gmail.nossr50.events.experience.McMMOPlayerXpGainEvent;
 
+import org.mcmmo.mcmmoxptracker.mcMMOXPTracker;
 import org.mcmmo.mcmmoxptracker.util.player.UserManager;
 
 public class McMMOListener implements Listener {
@@ -27,6 +28,7 @@ public class McMMOListener implements Listener {
             return;
         }
 
-        UserManager.getPlayer(player).getProfile().registerXpGain(skillType, event.getRawXpGained());
+        mcMMOXPTracker.p.debug("Gained XP: " + skillType.toString() + " " + rawXp);
+        UserManager.getPlayer(player).getProfile().registerXpGain(skillType, rawXp);
     }
 }

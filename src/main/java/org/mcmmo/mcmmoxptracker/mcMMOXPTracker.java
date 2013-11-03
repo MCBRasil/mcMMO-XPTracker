@@ -38,6 +38,8 @@ public class mcMMOXPTracker extends JavaPlugin {
 
         Config.getInstance();
         Logger.getInstance().log("Starting " + this.getDescription().getName() + ": " + Logger.getInstance().getDateStamp());
+
+        scheduleTasks();
     }
 
     private void registerEvents() {

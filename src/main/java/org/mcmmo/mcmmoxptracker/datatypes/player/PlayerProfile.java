@@ -97,7 +97,6 @@ public class PlayerProfile {
                     Logger.getInstance().log("SkillType: " + skillType + " xp = " + getRegisteredXpGain(skillType));
                 }
             }
-            Logger.getInstance().log("Nothing registered..");
         }
     }
 }
