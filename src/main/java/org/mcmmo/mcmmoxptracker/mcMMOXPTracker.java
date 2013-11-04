@@ -10,6 +10,7 @@ import org.mcmmo.mcmmoxptracker.config.Config;
 import org.mcmmo.mcmmoxptracker.listeners.McMMOListener;
 import org.mcmmo.mcmmoxptracker.listeners.PlayerListener;
 import org.mcmmo.mcmmoxptracker.runnables.ClearRegisteredXPGainTask;
+import org.mcmmo.mcmmoxptracker.util.LogFilter;
 import org.mcmmo.mcmmoxptracker.util.Logger;
 
 public class mcMMOXPTracker extends JavaPlugin {
@@ -23,6 +24,7 @@ public class mcMMOXPTracker extends JavaPlugin {
     @Override
     public void onEnable() {
         p = this;
+        getLogger().setFilter(new LogFilter(this));
 
         setupMcMMO();
 
